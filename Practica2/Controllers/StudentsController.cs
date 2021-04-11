@@ -13,6 +13,39 @@ namespace Practica2.Controllers
     {
         public StudentsController()
         {
+
+        }
+                [HttpGet]
+        public List<Student> GetStudent()
+        {
+            return new List<Student>(){
+                new Student(){Name = "Sofia Vargas"},
+                new Student(){Name = "Andi Guardia"},
+                new Student(){Name = "Gabriel Perez"},
+                new Student(){Name = "Ale Ledezma"},
+            };
+        }
+       [HttpPost]
+        public Student CreateStudent([FromBody] String studentName, String studentLastName)
+        {
+            return new Student()
+            {
+                Name = studentName,
+            };
+        }
+
+        [HttpPut]
+        public Student UpdateStudent([FromBody] Student student)
+        {
+            student.Name = "updated";
+            return student;
+        }
+
+        [HttpDelete]
+        public Student DeleteStudent([FromBody] Student student)
+        {
+            student.Name = "deleted";
+            return student;
         }
     }
 }
